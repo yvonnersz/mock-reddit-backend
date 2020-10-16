@@ -3,20 +3,36 @@ class Post < ApplicationRecord
     has_many :comments
     validates :title, :subreddit, :content, presence: true
 
-    def update_post
+    def upvote_post
         self.upvotes = self.upvotes + 1
         self.save
     end
 
-    def update_karma
+    def upvote_karma
         user = User.find(self.user_id)
         user.karma = user.karma + 1
         user.save
     end
 
+    def downvote_post
+        self.upvotes = self.upvotes - 1
+        self.save
+    end
+
+    def downvote_karma
+        user = User.find(self.user_id)
+        user.karma = user.karma - 1
+        user.save
+    end
+
     def upvote
-        self.update_post
-        self.update_karma
+        self.upvote_post
+        self.upvote_karma
+    end
+
+    def downvote
+        self.downvote_post
+        self.downvote_karma
     end
 
 end

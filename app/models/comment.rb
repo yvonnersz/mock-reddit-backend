@@ -3,27 +3,36 @@ class Comment < ApplicationRecord
     belongs_to :post
     validates :content, presence: true
 
-    def update_comment
+    def upvote_comment
         self.upvotes = self.upvotes + 1
         self.save
     end
 
-    def update_karma
+    def upvote_karma
         user = User.find(self.user_id)
         user.karma = user.karma + 1
         user.save
     end
 
-    def update_post
-        post = Post.find(self.post_id)
-        post.upvotes = post.upvotes + 1
-        post.save
+    def upvote
+        self.upvote_comment
+        self.upvote_karma
     end
 
-    def upvote
-        self.update_comment
-        self.update_karma
-        self.update_post
+    def downvote_comment
+        self.upvotes = self.upvotes - 1
+        self.save
+    end
+
+    def downvote_karma
+        user = User.find(self.user_id)
+        user.karma = user.karma - 1
+        user.save
+    end
+
+    def downvote
+        self.downvote_comment
+        self.downvote_karma
     end
 
 end
