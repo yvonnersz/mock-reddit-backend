@@ -7,7 +7,7 @@ class Api::V1::UsersController < ApplicationController
 
     def show
         user = User.find_by(:id => params[:id])
-        render json: user
+        render json: UserSerializer.new(user)
     end
 
     def destroy
