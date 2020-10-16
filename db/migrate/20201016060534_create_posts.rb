@@ -5,6 +5,7 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       t.string :subreddit
       t.string :content
       t.integer :upvotes
+      t.integer :user_id
 
       t.timestamps
     end
