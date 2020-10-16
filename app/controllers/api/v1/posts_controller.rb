@@ -7,6 +7,7 @@ class Api::V1::PostsController < ApplicationController
 
     def create
         post = Post.create(post_params)
+        post.upvote
         render json: post
     end
 
