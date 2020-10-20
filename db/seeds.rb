@@ -6,10 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-yvonne = User.create(username: 'yvonne', password: 'password', karma: 0);
-simon = User.create(username: 'simon', password: 'password', karma: 0);
+post = Post.create(title: 'First Post', subreddit: 'Newbie', user: 'Yvonne', content: 'Hello all, this is my first post.', upvotes: 0);
 
-post = Post.create(title: 'First Post', subreddit: 'Newbie', content: 'Hello all, this is my first post.', upvotes: 0, user_id: 1);
-
-comment = Comment.create(content: 'Welcome!', upvotes: 0, user_id: 2, post_id: 1)
+comment = Comment.create(content: 'Welcome!', user: 'Simon', upvotes: 0, post_id: 1)
 
