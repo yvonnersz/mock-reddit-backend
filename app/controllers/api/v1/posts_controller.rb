@@ -13,7 +13,7 @@ class Api::V1::PostsController < ApplicationController
 
     def show
         post = Post.find_by(:id => params[:id])
-        render json: PostSerializer.new(post, {include: [:user, :comments]})
+        render json: post
     end
 
     def destroy
@@ -24,7 +24,7 @@ class Api::V1::PostsController < ApplicationController
     private
 
     def post_params
-        params.require(:post).permit(:title, :subreddit, :content, :upvotes)
+        params.require(:post).permit(:title, :subreddit, :content, :upvotes, :user_id)
     end
 
 end

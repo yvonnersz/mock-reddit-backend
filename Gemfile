@@ -26,7 +26,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rack-cors'
 
 # With Fast JSON API, we can extract and separate into Serializer classes, keeping our controller cleaner.
-gem 'fast_jsonapi'
+# gem 'fast_jsonapi'
+gem 'active_model_serializers'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
