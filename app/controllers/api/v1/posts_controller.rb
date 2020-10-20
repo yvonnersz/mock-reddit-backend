@@ -2,7 +2,7 @@ class Api::V1::PostsController < ApplicationController
 
     def index
         posts = Post.all
-        render json: posts
+        render json: posts, include: [:comments]
     end
 
     def create
@@ -13,7 +13,7 @@ class Api::V1::PostsController < ApplicationController
 
     def show
         post = Post.find_by(:id => params[:id])
-        render json: PostSerializer.new(post, {include: [:user, :comments]})
+        render json: post, include: [:comments]
     end
 
     def destroy
