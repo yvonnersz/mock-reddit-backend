@@ -2,7 +2,7 @@ class Api::V1::PostsController < ApplicationController
 
     def index
         posts = Post.all
-        render json: posts
+        render json: posts, include: [:comments]
     end
 
     def create
@@ -13,7 +13,17 @@ class Api::V1::PostsController < ApplicationController
 
     def show
         post = Post.find_by(:id => params[:id])
+<<<<<<< HEAD
         render json: post
+=======
+        render json: post, include: [:comments]
+    end
+
+    def update
+        post = Post.find_by(:id => params[:id])
+        post.update(post_params)
+        render json: post, include: [:comments]
+>>>>>>> delete-user-model
     end
 
     def destroy
