@@ -13,6 +13,12 @@ class Api::V1::CommentsController < ApplicationController
 
     def show
         comment = @post.comments.find_by(:id => params[:id])
+        render json: comment, include: [:post]
+    end
+
+    def update
+        comment = @post.comments.find_by(:id => params[:id])
+        comment.update(comment_params)
         render json: comment
     end
 

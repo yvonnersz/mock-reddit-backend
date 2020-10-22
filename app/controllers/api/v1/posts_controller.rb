@@ -16,6 +16,12 @@ class Api::V1::PostsController < ApplicationController
         render json: post, include: [:comments]
     end
 
+    def update
+        post = Post.find_by(:id => params[:id])
+        post.update(post_params)
+        render json: post, include: [:comments]
+    end
+
     def destroy
         post = Post.find_by(:id => params[:id])
         post.destroy
