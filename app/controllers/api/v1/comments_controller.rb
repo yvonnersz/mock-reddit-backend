@@ -8,6 +8,7 @@ class Api::V1::CommentsController < ApplicationController
 
     def create
         comment = @post.comments.create(comment_params)
+        comment.post.upvote
         render json: comment
     end
 
@@ -25,6 +26,7 @@ class Api::V1::CommentsController < ApplicationController
     def destroy
         comment = @post.comments.find_by(:id => params[:id])
         comment.destroy
+        render json: comment
     end
 
     private
@@ -34,7 +36,7 @@ class Api::V1::CommentsController < ApplicationController
     end
     
     def comment_params
-        params.require(:comment).permit(:content, :user, :upvotes, :post_id)
+        params.require(:comment).permit(:id, :content, :user, :upvotes, :post_id)
     end
 
 end
