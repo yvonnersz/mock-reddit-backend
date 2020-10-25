@@ -6,7 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-post = Post.create(title: 'First Post', subreddit: 'Newbie', user: 'Yvonne', content: 'Hello all, this is my first post.', upvotes: 0);
+post = Post.create(title: 'First Post', subreddit: 'New', user: 'Yvonne', content: 'Hello all, this is my first post.', upvotes: 1);
 
-comment = Comment.create(content: 'Welcome!', user: 'Simon', upvotes: 0, post_id: 1)
+comment = Comment.create(content: 'Welcome!', user: 'Simon', upvotes: 0, post_id: 1);
+comment2 = Comment.create(content: 'Hi.', user: 'Peri', upvotes: 2, post_id: 1)
+
 
