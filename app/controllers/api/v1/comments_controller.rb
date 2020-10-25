@@ -9,7 +9,7 @@ class Api::V1::CommentsController < ApplicationController
     def create
         comment = @post.comments.create(comment_params)
         comment.post.upvote
-        render json: comment
+        render json: comment, include: [:post]
     end
 
     def show

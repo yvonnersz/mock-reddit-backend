@@ -31,7 +31,7 @@ class Api::V1::PostsController < ApplicationController
     private
 
     def post_params
-        params.require(:post).permit(:title, :subreddit, :content, :upvotes, :user_id)
+        params.require(:post).permit(:title, :subreddit, :user, :content, :upvotes)
     end
 
 end
