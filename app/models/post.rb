@@ -7,8 +7,4 @@ class Post < ApplicationRecord
         self.save
     end
 
-    def downvote
-        self.upvotes = self.upvotes - 1
-        self.save
-    end
 end
