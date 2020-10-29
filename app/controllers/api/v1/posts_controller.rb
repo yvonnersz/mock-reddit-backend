@@ -6,9 +6,15 @@ class Api::V1::PostsController < ApplicationController
     end
 
     def create
-        post = Post.create(post_params)
-        post.upvote
-        render json: post
+        post = Post.new(post_params)
+
+        if post.valid?
+            post = Post.create(post_params)
+            post.upvote
+            render json:post
+        else
+            render json: {error: 'ERROR: Please enter in all fields.'}
+        end
     end
 
     def show
@@ -19,7 +25,12 @@ class Api::V1::PostsController < ApplicationController
     def update
         post = Post.find_by(:id => params[:id])
         post.update(post_params)
-        render json: post, include: [:comments]
+
+        if post.valid?
+            render json: post, include: [:comments]
+        else
+            render json: {error: 'ERROR: Unable to update post. Please enter content.'}
+        end
     end
 
     def destroy

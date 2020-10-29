@@ -7,9 +7,14 @@ class Api::V1::CommentsController < ApplicationController
     end
 
     def create
-        comment = @post.comments.create(comment_params)
-        comment.post.upvote
-        render json: comment, include: [:post]
+        comment = @post.comments.new(comment_params)
+        
+        if comment.valid?
+            comment.post.upvote
+            render json: comment, include: [:post]
+        else
+            render json: {error: 'ERROR: Please enter in required fields.'}
+        end
     end
 
     def show
@@ -20,7 +25,12 @@ class Api::V1::CommentsController < ApplicationController
     def update
         comment = @post.comments.find_by(:id => params[:id])
         comment.update(comment_params)
-        render json: comment
+
+        if comment.valid?
+            render json: comment
+        else
+            render json: {error: 'ERROR: Unable to update comment. Please enter in content.'}
+        end
     end
 
     def destroy
