@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(version: 2020_10_16_060609) do
     t.string "user"
     t.integer "upvotes"
     t.integer "post_id"
+    t.boolean "toggle_upvote"
+    t.boolean "toggle_downvote"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -27,6 +29,8 @@ ActiveRecord::Schema.define(version: 2020_10_16_060609) do
     t.string "user"
     t.string "content"
     t.integer "upvotes"
+    t.boolean "toggle_upvote"
+    t.boolean "toggle_downvote"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

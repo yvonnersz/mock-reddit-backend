@@ -6,6 +6,8 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       t.string :user
       t.string :content
       t.integer :upvotes
+      t.boolean :toggle_upvote
+      t.boolean :toggle_downvote
 
       t.timestamps
     end

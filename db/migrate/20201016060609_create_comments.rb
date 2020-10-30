@@ -5,6 +5,8 @@ class CreateComments < ActiveRecord::Migration[6.0]
       t.string :user
       t.integer :upvotes
       t.integer :post_id
+      t.boolean :toggle_upvote
+      t.boolean :toggle_downvote
 
       t.timestamps
     end
