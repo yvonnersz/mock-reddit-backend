@@ -10,6 +10,7 @@ class Api::V1::PostsController < ApplicationController
 
         if post.valid?
             post = Post.create(post_params)
+            post.update(:user_id => session[:user_id])
             post.upvote
             render json:post
         else
@@ -42,7 +43,7 @@ class Api::V1::PostsController < ApplicationController
     private
 
     def post_params
-        params.require(:post).permit(:title, :subreddit, :user, :content, :upvotes, :toggle_upvote, :toggle_downvote)
+        params.require(:post).permit(:title, :subreddit, :user_id, :content, :upvotes, :toggle_upvote, :toggle_downvote)
     end
 
 end
