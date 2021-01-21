@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_16_060609) do
+ActiveRecord::Schema.define(version: 2021_01_21_155136) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2020_10_16_060609) do
     t.integer "post_id"
     t.boolean "toggle_upvote"
     t.boolean "toggle_downvote"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -31,6 +32,15 @@ ActiveRecord::Schema.define(version: 2020_10_16_060609) do
     t.integer "upvotes"
     t.boolean "toggle_upvote"
     t.boolean "toggle_downvote"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+    t.string "karma"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
