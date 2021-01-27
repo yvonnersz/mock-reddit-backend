@@ -10,9 +10,8 @@ class Api::V1::PostsController < ApplicationController
 
         if post.valid?
             post = Post.create(post_params)
-            post.update(:user_id => session[:user_id])
             post.upvote
-            render json:post
+            render json: post
         else
             render json: {error: 'ERROR: Please enter in all fields.'}
         end
