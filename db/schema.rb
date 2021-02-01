@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(version: 2021_01_21_155136) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
-    t.string "user"
     t.integer "upvotes"
     t.integer "post_id"
     t.boolean "toggle_upvote"
@@ -27,7 +26,6 @@ ActiveRecord::Schema.define(version: 2021_01_21_155136) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "subreddit"
-    t.string "user"
     t.string "content"
     t.integer "upvotes"
     t.boolean "toggle_upvote"

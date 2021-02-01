@@ -2,7 +2,7 @@ class Api::V1::PostsController < ApplicationController
 
     def index
         posts = Post.all
-        render json: posts, include: [:comments]
+        render json: posts, include: [:comments, :user]
     end
 
     def create
@@ -19,7 +19,7 @@ class Api::V1::PostsController < ApplicationController
 
     def show
         post = Post.find_by(:id => params[:id])
-        render json: post, include: [:comments]
+        render json: post, include: [:comments, :user]
     end
 
     def update
