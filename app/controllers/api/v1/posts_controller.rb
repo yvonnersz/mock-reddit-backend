@@ -2,7 +2,7 @@ class Api::V1::PostsController < ApplicationController
 
     def index
         posts = Post.all
-        render json: posts, include: [:comments, :user]
+        render json: posts, include: [:comments, :user, :votes]
     end
 
     def create
@@ -10,7 +10,6 @@ class Api::V1::PostsController < ApplicationController
 
         if post.valid?
             post = Post.create(post_params)
-            post.upvote
             render json: post
         else
             render json: {error: 'ERROR: Please enter in all fields.'}
@@ -19,7 +18,7 @@ class Api::V1::PostsController < ApplicationController
 
     def show
         post = Post.find_by(:id => params[:id])
-        render json: post, include: [:comments, :user]
+        render json: post, include: [:comments, :user, :votes]
     end
 
     def update
@@ -42,7 +41,7 @@ class Api::V1::PostsController < ApplicationController
     private
 
     def post_params
-        params.require(:post).permit(:title, :subreddit, :user_id, :content, :upvotes, :toggle_upvote, :toggle_downvote)
+        params.require(:post).permit(:title, :subreddit, :user_id, :content)
     end
 
 end

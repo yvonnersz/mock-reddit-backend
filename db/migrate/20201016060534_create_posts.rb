@@ -4,9 +4,6 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       t.string :title
       t.string :subreddit
       t.string :content
-      t.integer :upvotes
-      t.boolean :toggle_upvote
-      t.boolean :toggle_downvote
       t.integer :user_id
 
       t.timestamps
