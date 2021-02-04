@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_21_155136) do
+ActiveRecord::Schema.define(version: 2021_02_04_012529) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -27,9 +27,6 @@ ActiveRecord::Schema.define(version: 2021_01_21_155136) do
     t.string "title"
     t.string "subreddit"
     t.string "content"
-    t.integer "upvotes"
-    t.boolean "toggle_upvote"
-    t.boolean "toggle_downvote"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -39,6 +36,15 @@ ActiveRecord::Schema.define(version: 2021_01_21_155136) do
     t.string "username"
     t.string "password_digest"
     t.integer "karma"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.boolean "upvote"
+    t.boolean "downvote"
+    t.integer "user_id"
+    t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -21,12 +21,29 @@ yvonne = User.create(
     :karma => 0
 )
 
+simon = User.create(
+    :username => 'simon',
+    :password_digest => 'password',
+    :karma => 0
+)
+
 post = Post.create(
     title: 'First Post', 
     subreddit: 'New', 
     user_id: yvonne.id, 
-    content: 'Hello all, this is my first post.', 
-    upvotes: 1, 
-    toggle_upvote: false, 
-    toggle_downvote: false
+    content: 'Hello all, this is my first post.'
 );
+
+vote = Vote.create(
+    downvote: false,
+    upvote: true,
+    user_id: yvonne.id,
+    post_id: post.id
+)
+
+vote2 = Vote.create(
+    downvote: false,
+    upvote: true,
+    user_id: simon.id,
+    post_id: post.id
+)
