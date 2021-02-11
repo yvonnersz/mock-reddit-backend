@@ -17,13 +17,13 @@
 
 yvonne = User.create(
     :username => 'yvonne',
-    :password_digest => 'password',
+    :password_digest => 'asdf',
     :karma => 0
 )
 
 simon = User.create(
     :username => 'simon',
-    :password_digest => 'password',
+    :password_digest => 'asdf',
     :karma => 0
 )
 
