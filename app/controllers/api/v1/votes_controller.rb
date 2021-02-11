@@ -8,8 +8,8 @@ class Api::V1::VotesController < ApplicationController
 
     def create
         vote = @post.votes.new(vote_params)
-        # binding.pry
-        if vote
+
+        if vote.valid?
             vote = @post.votes.create(vote_params)
             render json: vote
         else
@@ -17,12 +17,6 @@ class Api::V1::VotesController < ApplicationController
                 error: 'You voted already'
             }
         end
-        # binding.pry
-
-        # if vote.valid?
-        #     @post.votes.create(vote_params)
-        #     render json: vote, include: [:post]
-        # end
     end
 
     private
