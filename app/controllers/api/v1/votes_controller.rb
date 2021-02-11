@@ -12,11 +12,13 @@ class Api::V1::VotesController < ApplicationController
         if vote.valid?
             vote = @post.votes.create(vote_params)
             render json: vote
-        else
-            render json: {
-                error: 'You voted already'
-            }
         end
+    end
+
+    def destroy
+        vote = @post.votes.find_by(:id => params[:id])
+        vote.destroy
+        render json: vote
     end
 
     private
