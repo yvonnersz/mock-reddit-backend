@@ -2,7 +2,7 @@ class Post < ApplicationRecord
     belongs_to :user
     has_many :comments
     has_many :votes
-    validates :title, :subreddit, :content, presence: true
+    validates :title, :content, presence: true
 
     # def total_upvotes
     #     upvotes = self.votes.select {|vote| vote.upvote}

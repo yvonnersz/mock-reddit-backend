@@ -29,7 +29,6 @@ simon = User.create(
 
 post = Post.create(
     title: 'First Post', 
-    subreddit: 'New', 
     user_id: yvonne.id, 
     content: 'Hello all, this is my first post.'
 );
