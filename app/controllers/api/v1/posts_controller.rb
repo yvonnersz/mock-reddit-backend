@@ -2,7 +2,8 @@ class Api::V1::PostsController < ApplicationController
 
     def index
         posts = Post.all
-        render json: posts, include: [:comments, :user, :votes]
+        # render json: posts, include: [:comments, :user, :votes]
+        render json: posts, include: {user: {}, votes: {}, :comments => {:include => :user}}
     end
 
     def create
