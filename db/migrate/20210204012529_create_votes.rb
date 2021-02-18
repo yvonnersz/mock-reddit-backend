@@ -5,6 +5,7 @@ class CreateVotes < ActiveRecord::Migration[6.0]
       t.boolean :downvote
       t.integer :user_id
       t.integer :post_id
+      t.integer :comment_id
 
       t.timestamps
     end

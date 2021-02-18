@@ -16,8 +16,6 @@ ActiveRecord::Schema.define(version: 2021_02_04_012529) do
     t.string "content"
     t.integer "upvotes"
     t.integer "post_id"
-    t.boolean "toggle_upvote"
-    t.boolean "toggle_downvote"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -44,6 +42,7 @@ ActiveRecord::Schema.define(version: 2021_02_04_012529) do
     t.boolean "downvote"
     t.integer "user_id"
     t.integer "post_id"
+    t.integer "comment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
