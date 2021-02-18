@@ -8,9 +8,8 @@ class Api::V1::CommentsController < ApplicationController
 
     def create
         comment = @post.comments.new(comment_params)
-        
+
         if comment.valid?
-            comment.post.upvote
             render json: comment, include: [:post]
         else
             render json: {error: 'ERROR: Please enter in required fields.'}
@@ -46,7 +45,7 @@ class Api::V1::CommentsController < ApplicationController
     end
     
     def comment_params
-        params.require(:comment).permit(:id, :content, :user, :upvotes, :post_id, :toggle_upvote, :toggle_downvote)
+        params.require(:comment).permit(:content, :user_id, :post_id)
     end
 
 end
