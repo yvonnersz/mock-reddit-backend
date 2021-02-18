@@ -10,7 +10,8 @@ class Api::V1::CommentsController < ApplicationController
         comment = @post.comments.new(comment_params)
 
         if comment.valid?
-            render json: comment, include: [:post]
+            comment = Comment.create(comment_params)
+            render json: comment, include: [:post, :user]
         else
             render json: {error: 'ERROR: Please enter in required fields.'}
         end
