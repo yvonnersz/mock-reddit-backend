@@ -7,6 +7,7 @@ class Api::V1::VotesController < ApplicationController
     end
 
     def create
+        binding.pry
         vote = @post.votes.new(vote_params)
 
         if vote.valid?

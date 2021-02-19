@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(version: 2021_02_04_012529) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
-    t.integer "upvotes"
     t.integer "post_id"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
