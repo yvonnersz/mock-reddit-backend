@@ -1,5 +1,4 @@
 class Api::V1::VotesController < ApplicationController
-    before_action :set_post
 
     def index
         votes = Vote.all
@@ -7,13 +6,27 @@ class Api::V1::VotesController < ApplicationController
     end
 
     def create
-        binding.pry
-        vote = @post.votes.new(vote_params)
+        if params[:post_id]
+            @post = Post.find_by(:id => params[:post_id])
+            vote = @post.votes.new(vote_params)
 
-        if vote.valid?
-            vote = @post.votes.create(vote_params)
-            render json: vote
+            if vote.valid?
+                vote = @post.votes.create(vote_params)
+                render json: vote
+            end
+
+        else
+            @comment = Comment.find_by(:id => params[:comment_id])
+            vote = @comment.votes.new(vote_params)
+
+            if vote.valid?
+                vote = @comment.votes.create(vote_params)
+                render json: vote
+            end
         end
+
+
+        
     end
 
     def destroy
@@ -26,6 +39,10 @@ class Api::V1::VotesController < ApplicationController
 
     def set_post
         @post = Post.find_by(:id => params[:post_id])
+    end
+
+    def set_comment
+        @comment = Comment.find_by(:id => params[:comment_id])
     end
 
     def vote_params

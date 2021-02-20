@@ -19,7 +19,7 @@ class Api::V1::CommentsController < ApplicationController
 
     def show
         comment = @post.comments.find_by(:id => params[:id])
-        render json: comment, include: [:post]
+        render json: comment, include: [:post, :votes]
     end
 
     def update
