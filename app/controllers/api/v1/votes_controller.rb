@@ -15,7 +15,7 @@ class Api::V1::VotesController < ApplicationController
                 render json: vote
             end
 
-        else
+        elsif params[:comment_id]
             @comment = Comment.find_by(:id => params[:comment_id])
             vote = @comment.votes.new(vote_params)
 
@@ -24,12 +24,12 @@ class Api::V1::VotesController < ApplicationController
                 render json: vote
             end
         end
-
-
         
     end
 
     def destroy
+        @post = Post.find_by(:id => params[:post_id])
+
         vote = @post.votes.find_by(:id => params[:id])
         vote.destroy
         render json: vote
