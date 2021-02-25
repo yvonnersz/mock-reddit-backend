@@ -28,11 +28,19 @@ class Api::V1::VotesController < ApplicationController
     end
 
     def destroy
-        @post = Post.find_by(:id => params[:post_id])
+        if params[:post_id]
+            @post = Post.find_by(:id => params[:post_id])
 
-        vote = @post.votes.find_by(:id => params[:id])
-        vote.destroy
-        render json: vote
+            vote = @post.votes.find_by(:id => params[:id])
+            vote.destroy
+            render json: vote
+        else
+            @comment = Comment.find_by(:id => params[:comment_id])
+
+            vote = @comment.votes.find_by(:id => params[:id])
+            vote.destroy
+            render json: vote
+        end
     end
 
     private
