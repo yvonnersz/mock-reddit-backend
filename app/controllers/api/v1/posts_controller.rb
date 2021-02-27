@@ -27,7 +27,7 @@ class Api::V1::PostsController < ApplicationController
         post.update(post_params)
 
         if post.valid?
-            render json: post, include: [:comments]
+            render json: post, include: [:comments, :user, :votes]
         else
             render json: {error: 'ERROR: Unable to update post. Please enter content.'}
         end
