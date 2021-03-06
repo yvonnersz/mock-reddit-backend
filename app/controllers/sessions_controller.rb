@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
             }
         else
             render json: {
-                status: 401
+                error: 'Invalid credentials.'
             }
         end
     end
