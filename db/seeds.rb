@@ -8,19 +8,19 @@
 
 yvonne = User.create(
     :username => 'yvonne',
-    :password_digest => 'password',
+    :password => 'password',
     :karma => 0
 )
 
 simon = User.create(
     :username => 'simon',
-    :password_digest => 'password',
+    :password => 'password',
     :karma => 0
 )
 
 peri = User.create(
     :username => 'peri',
-    :password_digest => 'password',
+    :password => 'password',
     :karma => 0
 )
 
