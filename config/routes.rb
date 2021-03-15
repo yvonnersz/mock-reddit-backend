@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get :logged_in, to: 'sessions#logged_in?'
   delete :logged_out, to: 'sessions#logged_out?'
 
+  root :to => 'posts#index'
+
   namespace :api do
     namespace :v1 do
       resources :posts do
