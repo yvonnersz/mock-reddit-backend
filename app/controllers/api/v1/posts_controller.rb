@@ -18,7 +18,7 @@ class Api::V1::PostsController < ApplicationController
 
     def show
         post = Post.find_by(:id => params[:id])
-        render json: post, include: [:comments, :user, :votes]
+        render json: post, include: {user: {}, votes: {}, :comments => {:include => {votes: {}, user: {}}}}
     end
 
     def update
