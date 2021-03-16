@@ -21,14 +21,7 @@ class SessionsController < ApplicationController
 
     def logged_in?
         if @current_user
-<<<<<<< HEAD
             render json: @current_user
-=======
-            render json: {
-                logged_in: true,
-                user: @current_user.to_json
-            }
->>>>>>> c177ea33597730c6f292334d8d59c2d9d15871cf
         else
             render json: {
                 logged_in: false
