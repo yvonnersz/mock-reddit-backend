@@ -8,13 +8,10 @@ class UsersController < ApplicationController
 
         if user
             session[:user_id] = user.id
-            render json: {
-                status: :created,
-                user: user
-            }
+            render json: user
         else
             render json: {
-                status: 500
+                error: 'Please try again.'
             }
         end
     end
