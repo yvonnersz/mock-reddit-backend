@@ -8,10 +8,7 @@ class SessionsController < ApplicationController
         
         if user && user.authenticate(params[:user][:password])
             session[:user_id] = user.id
-            render json: {
-                status: :created,
-                user: user
-            }
+            render json: user
         else
             render json: {
                 error: 'Invalid credentials.'
