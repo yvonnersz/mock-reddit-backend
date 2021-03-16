@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
     def create
-        user = User.create(
+        user = User.new(
             :username => params[:user][:username],
             :password => params[:user][:password],
             :password_confirmation => params[:user][:password_confirmation]
         )
 
-        if params[:user][:password] === params[:user][:password_confirmation] && user
+        if user.valid?
+            user.save
             session[:user_id] = user.id
             render json: user
         else
