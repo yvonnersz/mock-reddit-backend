@@ -6,7 +6,7 @@ class UsersController < ApplicationController
             :password_confirmation => params[:user][:password_confirmation]
         )
 
-        if user
+        if params[:user][:password] === params[:user][:password_confirmation] && user
             session[:user_id] = user.id
             render json: user
         else
